@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ember Dice Roller</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+
+    <script type="text/x-handlebars" id="application">
+      <h1>Dice Roller</h1>
+      {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="index">
+      <p>Our content goes here</p>
+
+      {{#link-to 'roll'}}Start rolling dice!{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id='roll'>
+      <p>
+        Enter your required dice roll below, for instance "3d6" will roll
+        three six sided dice.
+      </p>
+
+      {{input value=rollString placeholder="Enter your roll dice, e.g. '3d6' here"}}
+      <button {{action 'rollDice'}}>Roll Dice</button>
+
+      {{#if errors}}
+        <div class="errors">
+          {{errors}}
+        </div>
+      {{/if}}
+
+      <hr>
+
+      <h2>Results</h2>
+
+      {{#each model.dices as |roll|}}
+        <div class="roll">
+          <span class="roll-number">{{roll.diceNumber}}</span>
+          <span class="roll-result" style="{{roll.proportion}}">{{roll.numberOfRolls}}</span>
+        </div>
+      {{else}}
+        No results yet
+      {{/each}}
+    </script>
+
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="../bower_components/ember/ember-template-compiler.js"></script>
+    <script type="text/javascript" src="../bower_components/ember/ember.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

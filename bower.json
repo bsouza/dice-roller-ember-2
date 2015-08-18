@@ -1,0 +1,16 @@
+{
+  "name": "dice-roller",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~2.0.0",
+    "handlebars": "~3.0.3"
+  }
+}
